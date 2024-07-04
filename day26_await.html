@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Await keyword</title>
+</head>
+<body>
+    <h1>G M Faysal Taysir</h1>
+    <script>
+        let h1 = document.querySelector("h1");
+        
+        let jsonData = '{"fact":"The smallest wildcat today is the Black-footed cat. The females are less than 20 inches (50 cm) long and can weigh as little as 2.5 lbs (1.2 kg).","length":145}';
+        let data = JSON.parse(jsonData);
+        console.log(data.fact);
+        let obj = {
+            name: "faysal",
+            id: "2004109"
+        };
+        // function getNum(){
+        //     return new Promise((resolve,reject)=>{
+        //         setTimeout(()=>{
+        //             let rand = Math.floor(Math.random()*10)+1;
+        //             console.log(rand);
+        //             resolve();
+        //         },1000);
+        //     })
+            
+        // }
+        // async function demo(){
+        //     await getNum();
+        //     await getNum();
+        //     await getNum();
+        //     await getNum();
+        // }
+        
+        function colorChange(color,delay,message){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    let num = Math.floor(Math.random()*5)+1;
+                    if(num>3){
+                        reject("Promise rejected");
+                    }
+                        
+                    // console.log(num);
+                    h1.style.color = color;
+                    let message = `Color changed to ${color}`;
+                    h1.innerText = message;
+                    console.log(message);
+                    resolve("resolved");
+                },delay);
+                
+            
+            });
+        } //colorChange function return promise
+
+        // function colorChange(color,delay){
+        //     return new Promise((resolve,reject)=>{
+        //         resolve(
+        //             setTimeout(()=>{
+        //                 console.log("inside");
+        //                 h1.style.color = color;
+        //             },delay)
+        //         )           
+        //     });
+        // }
+//         colorChange('red', 1000).then((timeoutId) => {
+//     console.log(`Timeout ID: ${timeoutId}`);
+//     // This will log almost immediately, before the color change
+// });
+
+
+        // colorChange("red")
+        //     .then(()=>{
+        //         colorChange("blue")
+        //     })
+        async function demo(){
+             // this also should be async and get promise
+            try{
+                await colorChange("green",1000,"Hello,");
+                await colorChange("blue",1000,"How");
+                await colorChange("brown",1000,"are");
+                await colorChange("red",1000,"you");
+            }
+            catch(err){
+                console.log("error: ",err);
+            }
+            
+            
+            let a = 10;
+            console.log(a);
+
+        }
+        // changeColor()
+        demo();
+        
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

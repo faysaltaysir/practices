@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <script>
+// setInterval(() => {
+    
+// }, 5000);
+        let url = "https://catfact.ninja/fact";
+        let proms = fetch(url);
+        console.log(proms);
+        proms
+            .then((res)=>{
+                console.log(res);
+                return res.json();
+            })
+            .then((data)=>{
+                console.log(data.fact);
+                return fetch(url);
+            })
+            .then((res)=>{
+                return res.json();
+            })
+            .then((data)=>{
+                console.log(data.fact);
+            })
+            .catch((err)=>{
+                console.log("ERROR -- ",err);
+            })
+            console.log("I am Happy");
+        let h1 = document.querySelector("h1");
+        h1.innerText = "arrreeh";
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.card{
+    display: inline-block;
+    color: black;
+    background-color: azure;
+    margin: 10px;
+    transition: all .3s linear;
+}
+.card:hover{
+    box-shadow: 20px 10px 50px rgba(0, 0, 0, 0.8);
+}

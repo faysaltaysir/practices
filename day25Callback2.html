@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallBacks</title>
+</head>
+<body>
+    <script>
+        // function savetoDb(data,success,failure){
+        //     let internetSpeed = Math.floor(Math.random()*10+1);
+        //     if(internetSpeed>4){
+        //         success();
+        //     }
+        //     else{
+        //         failure();
+        //     }
+        // }
+
+        ///////////// using callback hell
+        
+        // savetoDb(
+        //     "Faysal",
+        //     () => {
+        //         console.log("success: Your data was saved: "); 
+        //         savetoDb(
+        //             "Hello World",
+        //             () => {
+        //                 console.log("sucess2: data saved");
+        //             },
+        //             () => {
+        //                 console.log("failure2: data not saved");
+        //             }
+        //         );
+        //     },
+        //     () => {
+        //         console.log("failure: your data not saved");
+        //     }
+        // );
+
+        //using promiss
+        function savetoDb(data){
+            return new Promise((resolve,reject)=>{
+                let internetSpeed = Math.floor(Math.random()*10+1);
+                if(internetSpeed>4){
+                    resolve('data was saved');
+                    // console.log('data saved');
+                }
+                else{
+                    reject('week connection');
+                }
+            });            
+        }
+        // let request = savetoDb("Hello World");
+        // console.log(request);
+        // request.then(()=>{
+        //     console.log("promiss was resolved");
+        // })
+        // .catch(()=>{
+        //     console.log("promiss was rejected");
+        // });
+
+        //promiss chaining
+
+        // savetoDb("Hello World")
+        //     .then(()=>{
+        //         console.log("promiss was resolved");
+        //         savetoDb("I am Faysal")
+        //             .then(()=>{
+        //                 console.log("2nd promiss was resolved");
+        //                 savetoDb("she is Tasnu")
+        //                     .then(()=>{
+        //                         console.log("3rd promiss was resolved");    
+        //                     })
+        //             })
+        //     })
+        //     .catch(()=>{
+        //         console.log("promiss was rejected");
+        //     });
+
+
+        //promiss improved version
+        savetoDb("Hey")
+            .then((result)=>{
+                console.log("data1 saved");
+                console.log("result of promiss: ", result);
+                return savetoDb("hello");
+            })
+            .then((result)=>{
+                console.log("data2 saved");
+                console.log("result of promiss: ", result);
+                return savetoDb("bye");
+            })
+            .then((result)=>{
+                console.log("data3 saved");
+                console.log("result of promiss: ", result);
+            })
+            .catch((error)=>{
+                console.log("data save rejected");
+                console.log("error of promiss: ", error);
+            })
+
+    </script>
+</body>
+</html>

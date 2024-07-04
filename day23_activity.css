@@ -1,0 +1,10 @@
+.colorBox{
+    width: 25rem;
+    height: 15rem;
+    border: 1px solid black;
+    margin: auto;
+}
+
+body{
+    text-align: center;
+}
